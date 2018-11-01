@@ -41,7 +41,7 @@ module.exports = function (app) {
                 if (result.title && result.link) {
                     var entry = new Article(result);
                     // Now, save that entry to the db
-                    Article.update(
+                    Article.updateMany(
                         {link: result.link},
                         result,
                         { upsert: true },
