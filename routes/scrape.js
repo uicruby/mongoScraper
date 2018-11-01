@@ -10,7 +10,7 @@ var axios= require("axios");
 
 module.exports = function (app) {
     app.get("/scrape", function (req, res) {
-        axios.get("https://www.nytimes.com/").then(function(response){
+        axios.get("https://www.echojs.com/").then(function(response){
 
         // console.log(response);
 
@@ -25,21 +25,18 @@ module.exports = function (app) {
             // NOTE: Cheerio selectors function similarly to jQuery's selectors,
             // but be sure to visit the package's npm page to see how it works
             // $("*").each((i,e)=>{console.log(e);});
-            $("article").each(function (i, element) {
+            
+            $("article h2").each(function (i, element) {
                 var result = {};
-                // var link = $(element).children().attr("href");
-                // var title = $(element).children().text();
-
-                result.title=$(this)
+                
+                result.title = $(this)
                 .children("a")
                 .text();
-                console.log(result.title);
-                result.summary = $(element).children("p.summary").text();
-                console.log(result.summary);
-                result.byline = $(element).children("p.byline").text();
-                result.title = $(element).children("h2").text();
-                console.log(result.title);
-                result.link = $(element).children("h2").children("a").attr("href");
+                // console.log(result.title);
+
+                result.link=$(this)
+                .children("a")
+                .attr("href");
                 // Save these results in an object that we'll push into the results array we defined earlier
                 if (result.title && result.link) {
                     var entry = new Article(result);
