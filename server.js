@@ -21,11 +21,11 @@ app.use(express.static("./public"));
 
 // connect to database
 mongoose.Promise = Promise;
-// var dbConnect = process.env.MONGODB_URI || "mongodb://localhost/mongoscraper";
+var dbConnect = process.env.MONGODB_URI || "mongodb://localhost/mongoscraper";
 if(process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI)
 } else {
-    mongoose.connect("mongodb://localhost/mongoscraper");
+    mongoose.connect("dbConnect");
 }
 // mongodb://foxsScrape:password12@ds119585.mlab.com:19585/heroku_hd8909ql;
 // Connect mongoose to our database
