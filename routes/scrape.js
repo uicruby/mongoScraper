@@ -2,9 +2,9 @@
 var cheerio = require("cheerio");
 var request = require("request");
 // require the models
-var Note = require("../models/Note");
-var Article = require("../models/Article");
-var Save = require("../models/Save");
+var Note = require("../models/note.js");
+var Article = require("../models/article.js");
+var Save = require("../models/save.js");
 var axios= require("axios");
 
 
